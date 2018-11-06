@@ -1,5 +1,5 @@
 function normalizeQuotes(t) {
-	return t.replace("\"", "\\\"").replace("'", "\\'");
+	return t.replace(/"/g, "\\\"").replace(/'/g, "\\'");
 }
 
 function contentChanged(){
