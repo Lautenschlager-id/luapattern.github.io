@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.container {
+	display: flex;
+}
+
+label {
+	font-size: 1.5em;
+	color: #EEEEEE;
+}
+
+.container textarea, label {
+	width: 50%;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.container textarea {
+	overflow: hidden;
+	border-radius: 10px;
+	padding: 5px 0 1.5px 5px;
+	background-color: #DBDBDB;
+	resize: none;
+}
+
+.info {
+	border-radius: 6px;
+	width: 50%;
+	margin: 2% 2% 3% 2%;
+	padding-top: .5%;
+	padding-bottom: 2%;
+	background-color: #DBDBDB;
+	box-shadow: 0px 0px 8px 8px rgb(81, 198, 239, .7);
+}
+
+.info .head {
+	border-radius: 15px;
+	width: 92%;
+	margin-left: 1.5%;
+	margin-bottom: 3%;
+	padding-left: 5%;
+	background-color: #313338;
+	color: #EEEEEE;
+	font-size: 3em;
+}
+
+.info .body {
+	padding-left: 1%;
+	color: #313338;
+	font-size: 1em;
+}
+
+a {
+	text-decoration: none;
+}
