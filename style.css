@@ -21,11 +21,12 @@ label {
 	padding: 5px 0 1.5px 5px;
 	background-color: #DBDBDB;
 	resize: none;
+	font-size: 1.5em;
 }
 
 .info {
 	border-radius: 6px;
-	width: 50%;
+	width: 100%;
 	margin: 2% 2% 3% 2%;
 	padding-top: .5%;
 	padding-bottom: 2%;
@@ -42,12 +43,21 @@ label {
 	background-color: #313338;
 	color: #EEEEEE;
 	font-size: 3em;
+	text-align: center;
 }
 
 .info .body {
 	padding-left: 1%;
 	color: #313338;
-	font-size: 1em;
+	font-size: 1.5em;
+}
+
+.info table {
+	text-align: left;
+}
+
+.info table th {
+	padding-right: 15px;
 }
 
 a {

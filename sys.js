@@ -1,19 +1,18 @@
-function normalizeQuotes(t) {
-	return t.replace(/"/g, "\\\"").replace(/'/g, "\\'");
+function normalize(t) {
+	return t.replace(/"/g, "\\\"").replace(/'/g, "\\'").replace(/\r/g, "\\r").replace(/\n/g, "\\n");
 }
 
 function contentChanged(){
 	var pattern = document.getElementById("pattern");
 	var content = document.getElementById("content");
 	var match = document.getElementById("matched");
-	var gmatch = document.getElementById("gmatched");
 	var counter = document.getElementById("counter");
 
 	try
 	{
 		var lua = fengari.load(`
-local str = "` + normalizeQuotes(content.value) + `"
-local pattern = "` + normalizeQuotes(pattern.value) + `"
+local str = "` + normalize(content.value) + `"
+local pattern = "` + normalize(pattern.value) + `"
 
 local matches, counter = { }, 0
 
@@ -40,21 +39,24 @@ return { len = counter - 1, matches = matches }
 		if (len == 0)
 			throw null;
 
-		gmatch.innerHTML = "";
+		var tbl = "<table>";
 		for (let index = 1; index <= len; index++)
 		{
 			obj = lua.get("matches").get(index);
-			obj = "<i>[" + obj.get(1) + ":" + obj.get(2) + "]</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + obj.get(3) + "<br>";
+			obj = "<tr><th><i>[" + obj.get(1) + ":" + obj.get(2) + "]</i></th><th>" + obj.get(3) + "</th></tr>";
 
-			if (index == 1)
-				match.innerHTML = obj;
-			gmatch.innerHTML += obj;
+			tbl += obj;
 		}
-		counter.innerHTML = "*" + len + " matches found";
+		tbl += "</table>"
+
+		match.innerHTML = tbl;
+		autosize(match);
+		
+		counter.innerHTML = "* " + len + " matches found";
 	}
 	catch(_)
 	{
-		counter.innerHTML = match.innerHTML = gmatch.innerHTML = "";
+		counter.innerHTML = match.innerHTML = "";
 	}
 }
 
