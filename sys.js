@@ -43,7 +43,7 @@ return { len = counter - 1, matches = matches }
 		for (let index = 1; index <= len; index++)
 		{
 			obj = lua.get("matches").get(index);
-			obj = "<tr><th><i>[" + obj.get(1) + ":" + obj.get(2) + "]</i></th><th>" + obj.get(3) + "</th></tr>";
+			obj = "<tr><th><i>[" + obj.get(1) + ":" + obj.get(2) + "]</i></th><th>" + (obj.get(3).replace(/</g, "&lt;")) + "</th></tr>";
 
 			tbl += obj;
 		}
